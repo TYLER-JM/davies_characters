@@ -18,7 +18,7 @@ Class Characters_model extends CI_model {
 	public function add_character($data)
 	{
 		$novel_data = array(
-			'title' => $data['novel'],
+			'title' => ucwords(strtolower(trim($data['novel']))),
 			'year_published' => $data['year_published']
 		);
 		# check if the Novel exists in the Database Already
@@ -33,8 +33,8 @@ Class Characters_model extends CI_model {
 		}
 
 		$character_data = array(
-			'first_name' => $data['first_name'],
-			'last_name' => $data['last_name'],
+			'first_name' => ucwords(strtolower(trim($data['first_name']))),
+			'last_name' => ucwords(strtolower(trim($data['last_name']))),
 			'novel_id' => $row->id
 		);
 
