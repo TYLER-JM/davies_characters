@@ -16,12 +16,8 @@ CREATE TABLE person (
   birth_name VARCHAR(255),
 	nick_name VARCHAR(255),
 	hometown VARCHAR(255),
-	bio TEXT NOT NULL,
-	birth_day SMALLINT,
-	birth_month VARCHAR(255),
+	about TEXT NOT NULL,
 	birth_year SMALLINT,
-	death_day SMALLINT,
-	death_month VARCHAR(255),
 	death_year SMALLINT
 );
 
