@@ -11,7 +11,8 @@ class Novels extends CI_Controller {
 	public function index()
 	{
 		$novels = $this->novels_model->get_novels();
-		$this->output->set_content_type('application/json')
-								 ->set_output(json_encode($novels));
+		$this->output
+							->set_content_type('application/json')
+							->set_output(json_encode($novels));
 	}
 }
