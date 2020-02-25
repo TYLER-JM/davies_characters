@@ -1,3 +1,3 @@
-SELECT first_name, last_name, nick_name
+SELECT first_name, last_name, birth_name
 FROM person
-WHERE hometown = 'Salterton';
+WHERE hometown = 'Toronto';
