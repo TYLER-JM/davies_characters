@@ -22,7 +22,6 @@ Class Characters_model extends CI_model {
 			'year_published' => $data['year_published']
 		);
 		# check if the Novel exists in the Database Already
-		# ...I should also format the text (Capitalize each first word)
 		$check_query = $this->db->get_where('novel', $novel_data);
 		$row = $check_query->row();
 		if (! $row)
@@ -34,8 +33,7 @@ Class Characters_model extends CI_model {
 
 		$character_data = array(
 			'first_name' => ucwords(strtolower(trim($data['first_name']))),
-			'last_name' => ucwords(strtolower(trim($data['last_name']))),
-			'novel_id' => $row->id
+			'last_name' => ucwords(strtolower(trim($data['last_name'])))
 		);
 
 		# only insert if the character doesn't already exist
