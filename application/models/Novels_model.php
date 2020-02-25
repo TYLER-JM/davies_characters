@@ -7,7 +7,7 @@ Class Novels_model extends CI_model {
 	}
 	public function get_novels($slug = false)
 	{
-		$query = $this->db->get('novels');
+		$query = $this->db->get('novel');
 		return $query->result_array();
 	}
 }

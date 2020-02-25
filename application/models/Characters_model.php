@@ -10,7 +10,7 @@ Class Characters_model extends CI_model {
 	{
 		if ($slug === false)
 		{
-			$query = $this->db->get('characters');
+			$query = $this->db->get('person');
 			return $query->result_array();
 		}
 	}
@@ -23,12 +23,12 @@ Class Characters_model extends CI_model {
 		);
 		# check if the Novel exists in the Database Already
 		# ...I should also format the text (Capitalize each first word)
-		$check_query = $this->db->get_where('novels', $novel_data);
+		$check_query = $this->db->get_where('novel', $novel_data);
 		$row = $check_query->row();
 		if (! $row)
 		{
 			$this->db->insert('novels', $novel_data);
-			$novel_query = $this->db->get_where('novels', $novel_data);
+			$novel_query = $this->db->get_where('novel', $novel_data);
 			$row = $novel_query->row();
 		}
 
@@ -39,11 +39,11 @@ Class Characters_model extends CI_model {
 		);
 
 		# only insert if the character doesn't already exist
-		$character_query = $this->db->get_where('characters', $character_data);
+		$character_query = $this->db->get_where('person', $character_data);
 		$row = $character_query->row();
 		if (! $row)
 		{
-			$this->db->insert('characters', $character_data);
+			$this->db->insert('person', $character_data);
 		}
 	}
 }
