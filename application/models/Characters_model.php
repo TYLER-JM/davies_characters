@@ -13,14 +13,20 @@ Class Characters_model extends CI_model {
 			return $query->result_array();
 		}
 
-		# run a query
-		
+		# run two queries
 		$this->db->select('title, year_published');
 		$this->db->from('novel');
 		$this->db->join('person_novel', 'person_novel.novel_id = novel.id');
 		$this->db->where('person_novel.person_id', $id);
-		$query = $this->db->get();
-		return $query->result();
+		$novels_query = $this->db->get();
+		$char_data = array(
+			'id' => $id
+		);
+		$characters_query = $this->db->get_where('person', $char_data);
+		$full_query = $characters_query->row();
+		$full_query->novels = $novels_query->result();
+		// print_r($full_query);
+		return $full_query;
 	}
 
 	public function add_character($data)

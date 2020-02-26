@@ -39,6 +39,6 @@ Class Characters extends CI_Controller {
 		$character = $this->characters_model->get_characters($id);
 		$this->output
 							->set_content_type('application/json')
-							->set_output(json_encode($character));
+							->set_output(json_encode($character, true));
 	}
 }
