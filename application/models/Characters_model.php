@@ -6,13 +6,21 @@ Class Characters_model extends CI_model {
 		$this->load->database();
 	}
 
-	public function get_characters($slug = false)
+	public function get_characters($id = false)
 	{
-		if ($slug === false)
-		{
+		if ($id === false) {
 			$query = $this->db->get('person');
 			return $query->result_array();
 		}
+
+		# run a query
+		
+		$this->db->select('title, year_published');
+		$this->db->from('novel');
+		$this->db->join('person_novel', 'person_novel.novel_id = novel.id');
+		$this->db->where('person_novel.person_id', $id);
+		$query = $this->db->get();
+		return $query->result();
 	}
 
 	public function add_character($data)
