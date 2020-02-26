@@ -23,9 +23,11 @@ Class Characters_model extends CI_model {
 			'id' => $id
 		);
 		$characters_query = $this->db->get_where('person', $char_data);
+		# row() returns an stdClass
+		# result returns an Array of stdClass objects
 		$full_query = $characters_query->row();
 		$full_query->novels = $novels_query->result();
-		// print_r($full_query);
+		#print_r($full_query);
 		return $full_query;
 	}
 
