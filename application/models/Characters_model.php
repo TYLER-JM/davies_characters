@@ -35,7 +35,6 @@ Class Characters_model extends CI_model {
 	{
 		$novel_data = array(
 			'title' => ucwords(strtolower(trim($data['novel']['title']))),
-			'year_published' => $data['novel']['year_published']
 		);
 		# check if the Novel exists in the Database Already
 		$check_query = $this->db->get_where('novel', $novel_data);
