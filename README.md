@@ -4,9 +4,11 @@ Davies has a knack for coming up with interesting and unique names for his chara
 
 ### API Endpoints
 
-- GET: `localhost/davies_characters` for a list of the characters in the database (as a JSON object)
+- GET: `https://localhost/davies_characters` for a list of the characters in the database (as a JSON object)
 
-- GET: `localhost/davies_characters/index.php/novels` for a list of the novels in the database
+- GET: `http://localhost/davies_characters/index.php/novels` for a list of the novels in the database
+
+- GET: `http://localhost/davies_characters/index.php/characters/:id` for all information on a single character
 
 - POST: `http://localhost/davies_characters/index.php/characters/add` to add characters (and the Novel if it doesn't already exist)
 
