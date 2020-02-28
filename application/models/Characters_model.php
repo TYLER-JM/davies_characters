@@ -47,13 +47,13 @@ Class Characters_model extends CI_model {
 
 		foreach ($data['person'] as $key => $value) {
 			if ($value) {
-				$character_data[$key] = $value;
+				$character_data[$key] = strtolower($value);
 			}
 		}
 
 		$is_character_there = [
-			'first_name' => ucwords(strtolower(trim($data['person']['first_name']))),
-			'last_name' => ucwords(strtolower(trim($data['person']['last_name'])))
+			'first_name' => strtolower(trim($data['person']['first_name'])),
+			'last_name' => strtolower(trim($data['person']['last_name']))
 		];
 
 		# only insert if the character doesn't already exist
