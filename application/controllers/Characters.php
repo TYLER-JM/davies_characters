@@ -28,9 +28,6 @@ Class Characters extends CI_Controller {
 	public function add()
 	{
 		$json_data = json_decode(file_get_contents('php://input'), true);
-		// $this->output
-		// 					->set_content_type('application/json')
-		// 					->set_output(json_encode($json_data));
 		$this->characters_model->add_character($json_data);
 	}
 
@@ -48,6 +45,5 @@ Class Characters extends CI_Controller {
 		$this->output
 							->set_content_type('application/json')
 							->set_output(json_encode($found, true));
-		# echo 'hey: ', $query;
 	}
 }

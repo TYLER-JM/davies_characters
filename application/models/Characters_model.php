@@ -27,29 +27,26 @@ Class Characters_model extends CI_model {
 		# result() returns an Array of stdClass objects
 		$full_query = $characters_query->row();
 		$full_query->novels = $novels_query->result();
-		#print_r($full_query);
 		return $full_query;
 	}
 
 	public function find_characters($query)
 	{
-		$this->db->get('person');
-		$this->db->like('first_name', $query, 'after');
-		$this->db->or_like('last_name', $query, 'after');
-		$query = $this->db->get('person');
-		$found_chars = $query->result();
-
-		// foreach ($found_chars as $key => $value) {
-		foreach ($found_chars as $char) {
-			$this->db->select('title, year_published');
-			$this->db->from('novel');
-			$this->db->join('person_novel', 'person_novel.novel_id = novel.id');
-			$this->db->where('person_novel.person_id', $char->id);
-			$novels_query = $this->db->get();
-			$char->novels = $novels_query->result();
-		}
-		# return $query->result();
-		return $found_chars;
+			$this->db->get('person');
+			$this->db->like('first_name', $query, 'after');
+			$this->db->or_like('last_name', $query, 'after');
+			$query = $this->db->get('person');
+			$found_chars = $query->result();
+	
+			foreach ($found_chars as $char) {
+				$this->db->select('title, year_published');
+				$this->db->from('novel');
+				$this->db->join('person_novel', 'person_novel.novel_id = novel.id');
+				$this->db->where('person_novel.person_id', $char->id);
+				$novels_query = $this->db->get();
+				$char->novels = $novels_query->result();
+			}
+			return $found_chars;
 	}
 
 	public function add_character($data)
