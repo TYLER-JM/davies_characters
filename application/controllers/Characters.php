@@ -41,4 +41,13 @@ Class Characters extends CI_Controller {
 							->set_content_type('application/json')
 							->set_output(json_encode($character, true));
 	}
+
+	public function search($query)
+	{
+		$found = $this->characters_model->find_characters($query);
+		$this->output
+							->set_content_type('application/json')
+							->set_output(json_encode($found, true));
+		# echo 'hey: ', $query;
+	}
 }
